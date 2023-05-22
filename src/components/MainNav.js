@@ -3,7 +3,7 @@ import { Navbar,Container,Button,Nav} from "react-bootstrap";
 
 
 
-const MainNav = () =>{
+const MainNav = (props) =>{
     return(
         <Navbar bg="primary" variant="dark" expand="lg" className="py-3">
       <Container>
@@ -17,7 +17,7 @@ const MainNav = () =>{
             
           </Nav>
         </Navbar.Collapse>
-      <Button className="btn btn-warning">Cart</Button>
+      <Button className="btn btn-info text-white" onClick={props.onclick}>Cart</Button>
       </Container>
     </Navbar>
     )
