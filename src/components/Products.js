@@ -1,4 +1,4 @@
-import { Row, Col, Card, Button } from "react-bootstrap";
+import {Card, Button } from "react-bootstrap";
 
 const Products = (props) => {
   const productsArr = [
@@ -42,15 +42,7 @@ const Products = (props) => {
 
   const items = productsArr.map((item)=>{
     return(
-        <Col>
-          <Card
-            style={{
-              width: "18rem",
-              marginLeft: "auto",
-              marginRight: "auto",
-              display: "block",
-            }}
-          >
+          <Card>
             <Card.Img variant="top" src={item.imageUrl} />
             <Card.Body>
               <Card.Title>{item.title}</Card.Title>
@@ -60,22 +52,15 @@ const Products = (props) => {
               <Button variant="primary" onClick={()=>props.onAddtocart(item)} >Add To Cart</Button>
             </Card.Body>
           </Card>
-        </Col>
     )
   })
 
 
   return (
-    <>
-      <h4 className="text-center mt-2 mb-4 text-white">Musics</h4>
-      <Row className="text-center mt-4">
-        {[items]}
-      </Row>
-      <h4 className="text-center my-4 text-white">Merchandises</h4>
-      <Row className="text-center mt-4">
-        {[items]}
-      </Row>
-    </>
+    <div className="mt-3" style={{display:"flex",justifyContent:"space-evenly"}}>
+      {[items]}
+      
+    </div>
   );
 };
 

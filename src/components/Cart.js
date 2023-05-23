@@ -11,13 +11,13 @@ const Cart = (props) =>{
         const items = ctx.items.map((item)=>{
             return(
                 <div class="card flex-row flex-wrap mb-3 we">
-                <div class="card-header border-0">
-                    <img src={item.imageUrl} alt="" />
+                <div class="card-header border-0" style={{padding: 0}}>
+                    <img style={{width: 105,height: 89,margin: 11}} src={item.imageUrl} alt="" />
                 </div>
                 <div class="card-block px-2">
-                    <h4 class="card-title">{item.title}</h4>
+                    <h5 class="card-title">{item.title}</h5>
                     <p class="card-text">{`Price : ${item.price} Amount : ${item.quantity}`}
-                    <a href="#" style={{marginleft:103}} class="btn btn-sm btn-danger">Remove</a>
+                    <a href="#" style={{marginLeft:18,marginBottom:6}} class="btn btn-sm btn-danger">Remove</a>
                     
                     </p>
                     
@@ -31,7 +31,7 @@ const Cart = (props) =>{
     return(<Container>
         <Offcanvas show={props.show} onHide={props.handleClose} placement="end">
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Cart</Offcanvas.Title>
+          <Offcanvas.Title><h3>Cart</h3></Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
         {[items]}
