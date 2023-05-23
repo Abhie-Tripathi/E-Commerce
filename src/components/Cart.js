@@ -1,51 +1,16 @@
-import { Offcanvas } from "react-bootstrap"
+import { Container, Offcanvas } from "react-bootstrap"
+import { useContext } from "react"
+import CartContext from "./context"
 
 
 const Cart = (props) =>{
-    const cartElements = [
-
-        {
-        
-        title: 'Colors',
-        
-        price: 100,
-        
-        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
-        
-        quantity: 2,
-        
-        },
-        
-        {
-        
-        title: 'Black and white Colors',
-        
-        price: 50,
-        
-        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
-        
-        quantity: 3,
-        
-        },
-        
-        {
-        
-        title: 'Yellow and Black Colors',
-        
-        price: 70,
-        
-        imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
-        
-        quantity: 1,
-        
-        }
-        
-        ]
+    const ctx = useContext(CartContext)
+    console.log(ctx.items)
 
 
-        const items = cartElements.map((item)=>{
+        const items = ctx.items.map((item)=>{
             return(
-                <div class="card flex-row flex-wrap mb-3">
+                <div class="card flex-row flex-wrap mb-3 we">
                 <div class="card-header border-0">
                     <img src={item.imageUrl} alt="" />
                 </div>
@@ -63,7 +28,7 @@ const Cart = (props) =>{
 
 
 
-    return(
+    return(<Container>
         <Offcanvas show={props.show} onHide={props.handleClose} placement="end">
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Cart</Offcanvas.Title>
@@ -72,6 +37,7 @@ const Cart = (props) =>{
         {[items]}
         </Offcanvas.Body>
       </Offcanvas>
+      </Container>
     )
 }
 

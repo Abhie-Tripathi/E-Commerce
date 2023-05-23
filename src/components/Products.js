@@ -57,7 +57,7 @@ const Products = (props) => {
               <Card.Text>
                 {item.price}
               </Card.Text>
-              <Button variant="primary">Add To Cart</Button>
+              <Button variant="primary" onClick={()=>props.onAddtocart(item)} >Add To Cart</Button>
             </Card.Body>
           </Card>
         </Col>
