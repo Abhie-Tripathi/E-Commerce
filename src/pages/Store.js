@@ -1,7 +1,6 @@
 import React,{useState} from 'react'
 import CartContext from '../components/context'
 import Cart from '../components/Cart'
-import MainNav from '../components/MainNav'
 import Products from '../components/Products'
 import Types from '../components/Types'
 
