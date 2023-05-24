@@ -1,43 +1,21 @@
-import React,{useState} from "react";
-import MainNav from "./components/MainNav";
-import Products from "./components/Products";
-import Cart from "./components/Cart"
-import CartContext from "./components/context";
+import React from "react";
+import Store from "./pages/Store";
+import About from "./pages/About";
+import { createBrowserRouter,RouterProvider} from "react-router-dom";
+import RootLayout from "./components/RootLayout";
+import Home from "./pages/Home";
+
+const Router = createBrowserRouter([
+  {path:"/",element:<RootLayout/>,
+  children:[{path:"/",element:<Store/>},
+  {path:"/about",element:<About/>},{path:"/home",element:<Home/>}]}
+  
+])
 
 
 function App() {
-  const [showcart,setshowcart] = useState(false)
-  const [cartitems,setcartitems] = useState([])
-
-  const onshow = () =>{
-    setshowcart(true)
-  }
-  const onhide = () =>{
-    setshowcart(false)
-  }
-
-  const onAddtocart = (selecteditem)=>{
-    const existingitemindex = cartitems.findIndex((item)=> item.title===selecteditem.title)
-    const existingcartitem = cartitems[existingitemindex]
-    let updatedItems
-    if(existingcartitem){
-      const updatedItem = {...existingcartitem,amount: existingcartitem.amount + 1}
-      updatedItems = [...cartitems]
-      updatedItems[existingitemindex] = updatedItem
-    }
-    else{
-      updatedItems = cartitems.concat(selecteditem)
-    }
-    setcartitems(updatedItems)
-    console.log(updatedItems)
-    
-  }
   return (
-    <CartContext.Provider value={{items:cartitems}}>
-    <Cart handleClose={onhide} show={showcart}/>
-      <MainNav onclick={onshow}/>
-      <Products onAddtocart={onAddtocart}/>
-    </CartContext.Provider>
+    <RouterProvider router={Router}/>
   );
 }
 

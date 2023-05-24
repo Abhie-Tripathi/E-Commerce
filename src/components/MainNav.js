@@ -1,4 +1,5 @@
 import { Navbar,Container,Button,Nav} from "react-bootstrap";
+import {LinkContainer} from 'react-router-bootstrap'
 
 
 
@@ -11,14 +12,18 @@ const MainNav = (props) =>{
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto mt-1 ">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#store">Store</Nav.Link>
-            <Nav.Link href="#about">About</Nav.Link>
+            <LinkContainer to="/home">
+            <Nav.Link>Home</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/">
+            <Nav.Link>Store</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/about">
+            <Nav.Link>About</Nav.Link>
+            </LinkContainer>
             
           </Nav>
         </Navbar.Collapse>
-      <Button className="btn btn-info text-white" style={{background:"#D2691E",width: 96,border: "none",
-    height: 44}} onClick={props.onclick}>Cart</Button>
       </Container>
     </Navbar>
     )
