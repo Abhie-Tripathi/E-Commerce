@@ -6,6 +6,8 @@ const Products = (props) => {
       title: "Colors",
 
       price: "100$",
+      
+      amount: 1,
 
       imageUrl:
         "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
@@ -16,6 +18,8 @@ const Products = (props) => {
 
       price: "50$",
 
+      amount: 1,
+
       imageUrl:
         "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
     },
@@ -24,6 +28,8 @@ const Products = (props) => {
       title: "Yellow and Black Colors",
 
       price: "70$",
+      
+      amount: 1,
 
       imageUrl:
         "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
@@ -33,6 +39,8 @@ const Products = (props) => {
       title: "Blue Color",
 
       price: "100$",
+      
+      amount: 1,
 
       imageUrl:
         "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",

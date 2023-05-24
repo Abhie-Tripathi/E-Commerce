@@ -16,8 +16,21 @@ function App() {
     setshowcart(false)
   }
 
-  const onAddtocart = (item)=>{
-    setcartitems((previtems)=> [...previtems,item])
+  const onAddtocart = (selecteditem)=>{
+    const existingitemindex = cartitems.findIndex((item)=> item.title===selecteditem.title)
+    const existingcartitem = cartitems[existingitemindex]
+    let updatedItems
+    if(existingcartitem){
+      const updatedItem = {...existingcartitem,amount: existingcartitem.amount + 1}
+      updatedItems = [...cartitems]
+      updatedItems[existingitemindex] = updatedItem
+    }
+    else{
+      updatedItems = cartitems.concat(selecteditem)
+    }
+    setcartitems(updatedItems)
+    console.log(updatedItems)
+    
   }
   return (
     <CartContext.Provider value={{items:cartitems}}>

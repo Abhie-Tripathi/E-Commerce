@@ -5,19 +5,19 @@ import CartContext from "./context"
 
 const Cart = (props) =>{
     const ctx = useContext(CartContext)
-    console.log(ctx.items)
+    
 
 
         const items = ctx.items.map((item)=>{
             return(
-                <div class="card flex-row flex-wrap mb-3 we">
-                <div class="card-header border-0" style={{padding: 0}}>
+                <div key={item.title} className="card flex-row flex-wrap mb-3 we">
+                <div className="card-header border-0" style={{padding: 0}}>
                     <img style={{width: 105,height: 89,margin: 11}} src={item.imageUrl} alt="" />
                 </div>
-                <div class="card-block px-2">
-                    <h5 class="card-title">{item.title}</h5>
-                    <p class="card-text">{`Price : ${item.price} Amount : ${item.quantity}`}
-                    <a href="#" style={{marginLeft:18,marginBottom:6}} class="btn btn-sm btn-danger">Remove</a>
+                <div className="card-block px-2">
+                    <h5 className="card-title">{item.title}</h5>
+                    <p className="card-text">{`Price : ${item.price} Amount : ${item.amount}`}
+                    <a href="#" style={{marginLeft:18,marginBottom:6}} className="btn btn-sm btn-danger">Remove</a>
                     
                     </p>
                     
