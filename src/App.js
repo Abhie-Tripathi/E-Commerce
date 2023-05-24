@@ -7,8 +7,8 @@ import Home from "./pages/Home";
 
 const Router = createBrowserRouter([
   {path:"/",element:<RootLayout/>,
-  children:[{path:"/",element:<Store/>},
-  {path:"/about",element:<About/>},{path:"/home",element:<Home/>}]}
+  children:[{path:"/",element:<Home/>},
+  {path:"/store",element:<Store/>},{path:"/about",element:<About/>}]}
   
 ])
 
