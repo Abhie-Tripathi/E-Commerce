@@ -21,6 +21,9 @@ const MainNav = (props) =>{
             <LinkContainer to="/about">
             <Nav.Link>About</Nav.Link>
             </LinkContainer>
+            <LinkContainer to="/contactus">
+            <Nav.Link>Contact Us</Nav.Link>
+            </LinkContainer>
             
           </Nav>
         </Navbar.Collapse>
