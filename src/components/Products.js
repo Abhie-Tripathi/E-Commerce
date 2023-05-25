@@ -1,4 +1,5 @@
 import {Card, Button } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 
 const Products = (props) => {
   const productsArr = [
@@ -50,8 +51,10 @@ const Products = (props) => {
 
   const items = productsArr.map((item)=>{
     return(
-          <Card>
+          <Card key={item.title}>
+            <LinkContainer to={`/store/${item.title}`} style={{cursor:"pointer"}}>
             <Card.Img variant="top" src={item.imageUrl} />
+            </LinkContainer>
             <Card.Body>
               <Card.Title>{item.title}</Card.Title>
               <Card.Text>

@@ -8,7 +8,7 @@ const Types = (props) => {
       <Navbar.Brand style={{alignSelf:"center",
     marginLeft: "auto",
     marginRight: "auto",fontWeight:500,fontSize:"32px",
-    padding:0}} href="#home">
+    padding:0}}>
         Store
       </Navbar.Brand>
       <Button className="btn btn-info text-white" style={{background:"#D2691E",width: 96,border: "none",
