@@ -1,14 +1,12 @@
 import { Container, Offcanvas } from "react-bootstrap"
 import { useContext } from "react"
-import CartContext from "./context"
+import { Context } from "./context"
 
 
-const Cart = (props) =>{
-    const ctx = useContext(CartContext)
-    
+const Cart = () =>{
+    const ctx = useContext(Context)
 
-
-        const items = ctx.items.map((item)=>{
+        const items = ctx.cartitems.map((item)=>{
             return(
                 <div key={item.title} className="card flex-row flex-wrap mb-3 we">
                 <div className="card-header border-0" style={{padding: 0}}>
@@ -29,7 +27,7 @@ const Cart = (props) =>{
 
 
     return(<Container>
-        <Offcanvas show={props.show} onHide={props.handleClose} placement="end">
+        <Offcanvas show={ctx.iscartopen} onHide={ctx.closecart} placement="end">
         <Offcanvas.Header closeButton>
           <Offcanvas.Title><h3>Cart</h3></Offcanvas.Title>
         </Offcanvas.Header>

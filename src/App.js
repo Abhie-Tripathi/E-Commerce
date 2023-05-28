@@ -6,14 +6,10 @@ import RootLayout from "./components/RootLayout";
 import Home from "./pages/Home";
 import ContactUs from "./pages/ContactUs";
 import ItemDescription from "./components/Itemdescription";
+import LoginPage from "./components/LoginPage";
+import ContextProvider from "./components/context";
 
-const items = 
-  {
-    id: 1,
-    name: 'Item 1',
-    description: 'This is the description for Item 1.',
-    reviews: ['Review 1', 'Review 2', 'Review 3'],
-  }
+
   
 
 const Router = createBrowserRouter([
@@ -26,12 +22,17 @@ const Router = createBrowserRouter([
       { path: "/about", element: <About /> },
       { path: "/contactus", element: <ContactUs /> },
       { path: "/store/:id",element:<ItemDescription/>}
-    ],
-  },
+    ]
+  },{
+    path:"/login",
+    element:<LoginPage/>
+  }
 ]);
 
 function App() {
-  return <RouterProvider router={Router} />;
+  return <ContextProvider>
+  <RouterProvider router={Router} />
+  </ContextProvider>
 }
 
 export default App;

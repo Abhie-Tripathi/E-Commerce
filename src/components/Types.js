@@ -1,7 +1,10 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import { Navbar,Container,Button} from "react-bootstrap"
+import { Context } from './context'
+import Cart from "./Cart"
 
 const Types = (props) => {
+  const ctx = useContext(Context)
   return (<>
   <Navbar bg="dark" variant="dark">
     <Container>
@@ -12,9 +15,10 @@ const Types = (props) => {
         Store
       </Navbar.Brand>
       <Button className="btn btn-info text-white" style={{background:"#D2691E",width: 96,border: "none",
-    height: 44}} onClick={props.onclick}>Cart</Button>
+    height: 44}} onClick={ctx.cartopen}>Cart</Button>
     </Container>
   </Navbar>
+  <Cart/>
   </>
   )
 }

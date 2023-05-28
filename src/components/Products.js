@@ -1,7 +1,11 @@
 import {Card, Button } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Context } from "./context";
 
 const Products = (props) => {
+
+  const ctx = useContext(Context)
   const productsArr = [
     {
       title: "Colors",
@@ -52,15 +56,15 @@ const Products = (props) => {
   const items = productsArr.map((item)=>{
     return(
           <Card key={item.title}>
-            <LinkContainer to={`/store/${item.title}`} style={{cursor:"pointer"}}>
+            <Link to={`/store/${item.title}`} style={{cursor:"pointer"}}>
             <Card.Img variant="top" src={item.imageUrl} />
-            </LinkContainer>
+            </Link>
             <Card.Body>
               <Card.Title>{item.title}</Card.Title>
               <Card.Text>
                 {item.price}
               </Card.Text>
-              <Button variant="primary" onClick={()=>props.onAddtocart(item)} >Add To Cart</Button>
+              <Button variant="primary" onClick={()=>ctx.setcartitems(item)} >Add To Cart</Button>
             </Card.Body>
           </Card>
     )
