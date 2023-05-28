@@ -12,8 +12,8 @@ export const Context = React.createContext({
 
 const ContextProvider = (props) => {
   const [cartitems, setcartitems] = useState([]);
-  const [iscartopen, setiscartopen] = useState();
-  const [token, settoken] = useState();
+  const [iscartopen, setiscartopen] = useState(false);
+  const [token, settoken] = useState(false);
 
   const cartopenhandler = () => {
     setiscartopen(true);

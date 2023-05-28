@@ -42,6 +42,7 @@ const LoginPage = () => {
       ctx.settoken(data.idToken)
       localStorage.setItem("Token",data.idToken)
       navigate("/store")
+  
 
 
     })

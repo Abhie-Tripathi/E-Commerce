@@ -1,37 +1,34 @@
 import React from "react";
 import Store from "./pages/Store";
 import About from "./pages/About";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {Route,Routes,Navigate} from "react-router-dom";
 import RootLayout from "./components/RootLayout";
 import Home from "./pages/Home";
 import ContactUs from "./pages/ContactUs";
 import ItemDescription from "./components/Itemdescription";
 import LoginPage from "./components/LoginPage";
 import ContextProvider from "./components/context";
+import { Context } from "./components/context";
+import { useContext } from "react";
+import MainNav from "./components/MainNav";
 
-
-  
-
-const Router = createBrowserRouter([
-  {
-    path: "/",
-    element: <RootLayout />,
-    children: [
-      { path: "/", element: <Home /> },
-      { path: "/store", element: <Store /> },
-      { path: "/about", element: <About /> },
-      { path: "/contactus", element: <ContactUs /> },
-      { path: "/store/:id",element:<ItemDescription/>}
-    ]
-  },{
-    path:"/login",
-    element:<LoginPage/>
-  }
-]);
 
 function App() {
+  const ctx = useContext(Context)
+
   return <ContextProvider>
-  <RouterProvider router={Router} />
+
+    <MainNav/>
+    {console.log(ctx.token)}
+    <Routes>
+      <Route path="/" element={<Home/>}/>
+      
+      <Route path="/store" element={!!ctx.token ? <Store/> : <Navigate replace to={"/login"} />}/>
+      <Route path="/about" element={<About/>}/>
+      <Route path="/contactus" element={<ContactUs/>}/>
+      <Route path="/store/:id" element={<ItemDescription/>}/>
+      <Route path="/login" element={<LoginPage/>}/>
+    </Routes>
   </ContextProvider>
 }
 
