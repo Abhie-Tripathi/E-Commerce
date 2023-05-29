@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 import { Container, Offcanvas } from 'react-bootstrap';
 import { Context } from './context';
 
@@ -6,11 +6,11 @@ const Cart = () => {
   const ctx = useContext(Context);
   const [items, setItems] = useState([]);
 
-  async function fetchData() {
+ async function fetchData() {
     try {
       console.log("Get Request from cart in useEffect")
       const response = await fetch(
-        `https://crudcrud.com/api/d3743053bc964437b46d30e58dd54a2e/${ctx.modifiedemail}`
+        `https://crudcrud.com/api/86b368901cc0484189a6afc2e912bbd5/${ctx.modifiedemail}`
       );
       const data = await response.json();
       setItems(data);
@@ -23,7 +23,7 @@ const Cart = () => {
     if (ctx.iscartopen) {
       fetchData();
     }
-  }, [ctx.iscartopen]);
+  });
 
   return (
     <Container>
@@ -47,13 +47,13 @@ const Cart = () => {
                 <h5 className="card-title">{item.title}</h5>
                 <p className="card-text">
                   {`Price: ${item.price} Amount: ${item.amount}`}
-                  <a
-                    href="#"
+                  <button
+                    
                     style={{ marginLeft: 18, marginBottom: 6 }}
                     className="btn btn-sm btn-danger"
                   >
                     Remove
-                  </a>
+                  </button>
                 </p>
               </div>
             </div>
