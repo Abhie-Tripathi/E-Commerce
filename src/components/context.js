@@ -38,6 +38,7 @@ const ContextProvider = (props) => {
   }
 
   const cartitemshandler = (selecteditem) => {
+    console.log("caritemshandler")
     const existingitemindex = cartitems.findIndex(
       (item) => item.title === selecteditem.title
     );
@@ -50,14 +51,19 @@ const ContextProvider = (props) => {
       };
       updatedItems = [...cartitems];
       updatedItems[existingitemindex] = updatedItem;
+      fetch(`https://crudcrud.com/api/d3743053bc964437b46d30e58dd54a2e/${enteredemail}`,{
+        method: "POST",
+        body: JSON.stringify(updatedItem),
+        headers: {"Content-Type": "application/json"}
+      })
     } else {
       updatedItems = cartitems.concat(selecteditem);
+      fetch(`https://crudcrud.com/api/d3743053bc964437b46d30e58dd54a2e/${enteredemail}`,{
+        method: "POST",
+        body: JSON.stringify(selecteditem),
+        headers: {"Content-Type": "application/json"}
+      })
     }
-    fetch(`https://crudcrud.com/api/d3743053bc964437b46d30e58dd54a2e/${enteredemail}`,{
-      method: "POST",
-      body: JSON.stringify(selecteditem),
-      headers: {"Content-Type": "application/json"}
-    })
     setcartitems(updatedItems);
 
 

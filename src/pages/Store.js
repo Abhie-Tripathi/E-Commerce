@@ -1,17 +1,20 @@
-import React,{useContext} from "react";
+import React from "react";
+import Types from "../components/Types";
 import Cart from "../components/Cart";
 import Products from "../components/Products";
-import Types from "../components/Types";
-
-
+import { Container, Row, Col } from "react-bootstrap";
 
 const Store = () => {
   return (
-    <>
-      <Types />
-      <Cart />
-      <Products/>
-    </>
+    <Container fluid className="d-flex justify-content-center align-items-center">
+      <Row>
+        <Col xs={10} className="mx-auto">
+          <Types />
+          <Products />
+          <Cart/>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

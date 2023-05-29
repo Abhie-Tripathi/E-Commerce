@@ -54,7 +54,7 @@ const LoginPage = () => {
   }
   return (
     <Container className="vh-100">
-      <Row className="justify-content-center align-items-center h-100">
+      <Row className="justify-content-center align-items-center h-50">
         <Col xs={12} sm={8} md={6} lg={4}>
           <h2 className="text-center text-white">Login</h2>
           <Form>

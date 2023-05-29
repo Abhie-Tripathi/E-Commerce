@@ -18,7 +18,6 @@ function App() {
   return <>
     <Router>
     <MainNav/>
-    {console.log(ctx.isloggedin)}
     <Routes>
       <Route path="/" element={<Home/>}/>
       {ctx.isloggedin &&
