@@ -4,6 +4,7 @@ import {useNavigate} from "react-router-dom"
 import { Context } from "./context";
 
 
+
 const LoginPage = () => {
   const ctx = useContext(Context)
   const navigate = useNavigate()
@@ -14,6 +15,7 @@ const LoginPage = () => {
     event.preventDefault()
     const enteredemail = emailinputref.current.value
     const enteredpassword = passwordinputref.current.value
+    ctx.enteredemail(enteredemail)
 
     fetch("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyB7344iRGQ2vtTko_2awbK36aPE_nCUw2c",{
       method:"POST",

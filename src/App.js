@@ -1,8 +1,7 @@
 import React from "react";
 import Store from "./pages/Store";
 import About from "./pages/About";
-import {Route,Routes,Navigate} from "react-router-dom";
-import RootLayout from "./components/RootLayout";
+import {BrowserRouter as Router,Route,Routes,Navigate} from "react-router-dom";
 import Home from "./pages/Home";
 import ContactUs from "./pages/ContactUs";
 import ItemDescription from "./components/Itemdescription";
@@ -16,20 +15,24 @@ import MainNav from "./components/MainNav";
 function App() {
   const ctx = useContext(Context)
 
-  return <ContextProvider>
-
+  return <>
+    <Router>
     <MainNav/>
-    {console.log(ctx.token)}
+    {console.log(ctx.isloggedin)}
     <Routes>
       <Route path="/" element={<Home/>}/>
+      {ctx.isloggedin &&
+      <Route path="/store" element={<Store/>}/>}
+      {!ctx.isloggedin &&
+      <Route path="/store" element={<Navigate to="/login"/>}/>}
       
-      <Route path="/store" element={!!ctx.token ? <Store/> : <Navigate replace to={"/login"} />}/>
       <Route path="/about" element={<About/>}/>
       <Route path="/contactus" element={<ContactUs/>}/>
       <Route path="/store/:id" element={<ItemDescription/>}/>
       <Route path="/login" element={<LoginPage/>}/>
     </Routes>
-  </ContextProvider>
+    </Router>
+    </>
 }
 
 export default App;

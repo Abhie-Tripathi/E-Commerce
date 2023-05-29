@@ -12,6 +12,10 @@ const MainNav = () => {
   const loginhandler = () =>{
     navigate("/login")
   }
+  const logouthandler = ()=>{
+    localStorage.removeItem("Token")
+    ctx.settoken(null)
+  }
   return (
     <Navbar style={{ background: "black" }} variant="dark" className="py-3">
       <Container>
@@ -48,6 +52,22 @@ const MainNav = () => {
               }}
             >
               Log in
+            </button>}
+            {ctx.isloggedin && <button
+              onClick={logouthandler}
+              className="btn btn-warning"
+              style={{
+                position: "absolute",
+                top: "18px",
+                right: "110px",
+                padding: "9px",
+                width: "108px",
+                fontSize: "17px",
+                fontWeight: 500,
+                borderRadius: "6px",
+              }}
+            >
+              Log out
             </button>}
           </Nav>
         </Navbar.Collapse>

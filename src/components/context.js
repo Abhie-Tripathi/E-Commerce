@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 
 export const Context = React.createContext({
   cartopen: () => {},
@@ -7,14 +7,21 @@ export const Context = React.createContext({
   cartitems: [],
   setcartitems: () => {},
   settoken: () => {},
-  isloggedin: false,
+  isloggedin: "false",
+  modifiedemail : "",
+  enteredemail : ""
 });
 
+
 const ContextProvider = (props) => {
+  const initialtoken = localStorage.getItem("Token")
   const [cartitems, setcartitems] = useState([]);
   const [iscartopen, setiscartopen] = useState(false);
-  const [token, settoken] = useState(false);
-
+  const [token, settoken] = useState(initialtoken);
+  const [enteredemail,setenteredemail] =  useState("")
+  
+  
+  
   const cartopenhandler = () => {
     setiscartopen(true);
   };
@@ -25,6 +32,10 @@ const ContextProvider = (props) => {
   const tokenhandler = (token) => {
     settoken(token);
   };
+
+  const emailhandler = (email) =>{
+    setenteredemail(email.replace(/[^a-zA-Z0-9 ]/g, ''))
+  }
 
   const cartitemshandler = (selecteditem) => {
     const existingitemindex = cartitems.findIndex(
@@ -42,7 +53,14 @@ const ContextProvider = (props) => {
     } else {
       updatedItems = cartitems.concat(selecteditem);
     }
+    fetch(`https://crudcrud.com/api/d3743053bc964437b46d30e58dd54a2e/${enteredemail}`,{
+      method: "POST",
+      body: JSON.stringify(selecteditem),
+      headers: {"Content-Type": "application/json"}
+    })
     setcartitems(updatedItems);
+
+
   };
   return (
     <Context.Provider
@@ -54,6 +72,8 @@ const ContextProvider = (props) => {
         cartitems: cartitems,
         settoken: tokenhandler,
         isloggedin: !!token,
+        modifiedemail: enteredemail,
+        enteredemail: emailhandler
       }}
     >
       {props.children}
