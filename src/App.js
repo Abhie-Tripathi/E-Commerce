@@ -6,7 +6,6 @@ import Home from "./pages/Home";
 import ContactUs from "./pages/ContactUs";
 import ItemDescription from "./components/Itemdescription";
 import LoginPage from "./components/LoginPage";
-import ContextProvider from "./components/context";
 import { Context } from "./components/context";
 import { useContext } from "react";
 import MainNav from "./components/MainNav";

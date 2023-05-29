@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Navbar, Container, Button } from 'react-bootstrap';
+import { Navbar, Button } from 'react-bootstrap';
 import { Context } from './context';
 
 const Types = () => {
