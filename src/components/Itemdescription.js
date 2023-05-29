@@ -1,8 +1,10 @@
-import React from "react";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import React,{useContext} from "react";
+import { Container, Row, Col, Card, Button,ListGroup } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import Types from "./Types";
 import Cart from "./Cart";
+import { Context } from "./context";
+
 
 const productsArr = [
   {
@@ -30,16 +32,40 @@ const productsArr = [
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
   },
 ];
+const customerReviews = [
+  {
+    name: "John Doe",
+    review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu sem rhoncus, vestibulum ipsum nec, viverra libero.",
+    imageUrl: "https://picsum.photos/64",
+  },
+  {
+    name: "Hamm",
+    review: "Vestibulum faucibus est vel ante tincidunt consectetur. Sed tempus urna at sem lacinia, ut iaculis sapien interdum.",
+    imageUrl: "https://picsum.photos/65",
+  },
+  {
+    name: "Dawodh",
+    review: "Vestibulum faucibus est vel ante tincidunt consectetur. Sed tempus urna at sem lacinia, ut iaculis sapien interdum.",
+    imageUrl: "https://picsum.photos/66",
+  },
+  {
+    name: "CJ",
+    review: "Vestibulum faucibus est vel ante tincidunt consectetur. Sed tempus urna at sem lacinia, ut iaculis sapien interdum.",
+    imageUrl: "https://picsum.photos/67",
+  },
+  // Add more reviews
+];
 
 const ItemDescription = () => {
+  const ctx = useContext(Context)
   const { id } = useParams();
   const selecteditem = productsArr.find((item) => item.title === id);
 
   return (
     <Container fluid>
-      <Cart/>
+      <Cart />
       <Row>
-      <Col xs={10} className="mx-auto">
+        <Col xs={10} className="mx-auto">
           <Types />
         </Col>
       </Row>
@@ -77,6 +103,7 @@ const ItemDescription = () => {
                 Buy Now
               </Button>
               <Button
+                onClick={()=>ctx.setcartitems(selecteditem)}
                 variant="primary"
                 style={{ borderRadius: "13px", padding: "19px", fontSize: "24px", fontWeight: 550 }}
               >
@@ -84,6 +111,29 @@ const ItemDescription = () => {
               </Button>
             </div>
           </Card.Body>
+        </Col>
+      </Row >
+      <Row className="mt-5" >
+        <Col>
+          <h2 className="text-center" style={{ color: "white", fontSize: "32px", fontWeight: 500 }}>
+            Customer Reviews
+          </h2>
+          <ListGroup className="mx-auto mt-4" style={{ maxWidth: "900px"}}>
+            {customerReviews.map((review, index) => (
+              <ListGroup.Item key={index}  style={{background:"antiquewhite"}}  className="d-flex align-items-center">
+                <img
+                  src={review.imageUrl}
+                  alt="Customer"
+                  className="mr-3 rounded-circle"
+                  style={{ width: "64px", height: "64px" }}
+                />
+                <div>
+                  <h5>{review.name}</h5>
+                  <p>{review.review}</p>
+                </div>
+              </ListGroup.Item>
+            ))}
+          </ListGroup>
         </Col>
       </Row>
     </Container>

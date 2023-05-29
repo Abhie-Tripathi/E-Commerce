@@ -27,7 +27,8 @@ function App() {
       
       <Route path="/about" element={<About/>}/>
       <Route path="/contactus" element={<ContactUs/>}/>
-      <Route path="/store/:id" element={<ItemDescription/>}/>
+      {ctx.isloggedin && <Route path="/store/:id" element={<ItemDescription/>}/>}
+      {!ctx.isloggedin && <Route path="/store/:id" element={<Navigate to="/login"/>}/>}
       <Route path="/login" element={<LoginPage/>}/>
     </Routes>
     </Router>
