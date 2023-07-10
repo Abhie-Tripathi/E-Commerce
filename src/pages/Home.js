@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 
 const Home = () => {
@@ -9,9 +10,11 @@ const Home = () => {
         <div className="text-center text-white">
           <h1 className="display-4">The Generics</h1>
           <p className="lead">Your Source for Beautiful Wallpapers</p>
+          <Link to="/store">
           <Button variant="primary" size="lg">
             Explore Our Collection
           </Button>
+          </Link>
         </div>
         <Row className="mt-5">
           <Col>
@@ -45,7 +48,7 @@ const Home = () => {
                   />
                   <Card.Body>
                     <Card.Title>Modern Collection</Card.Title>
-                    <Button variant="primary">View Details</Button>
+                    <Link to="/store"><Button variant="primary">View Details</Button></Link>
                   </Card.Body>
                 </Card>
               </Col>
@@ -58,7 +61,7 @@ const Home = () => {
                   />
                   <Card.Body>
                     <Card.Title>Nature-Inspired Collection</Card.Title>
-                    <Button variant="primary">View Details</Button>
+                    <Link to="/store"><Button variant="primary">View Details</Button></Link>
                   </Card.Body>
                 </Card>
               </Col>

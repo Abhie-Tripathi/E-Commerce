@@ -17,7 +17,7 @@ const LoginPage = () => {
     const enteredpassword = passwordinputref.current.value
     ctx.enteredemail(enteredemail)
 
-    fetch("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyB7344iRGQ2vtTko_2awbK36aPE_nCUw2c",{
+    fetch("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyD57U-5caMRj-kilB8MiXq2pIS_t8PwY9k",{
       method:"POST",
       headers: {"Content-Type":"application/json"},
       body: JSON.stringify({

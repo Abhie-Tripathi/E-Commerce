@@ -1,5 +1,8 @@
 import React from 'react';
 import { Container, Row, Col, Image, Card } from 'react-bootstrap';
+import aboutUs from "../assets/aboutus.jpg"
+import person1 from "../assets/person1.jpg"
+import person2 from "../assets/person2.jpg"
 
 const About = () => {
   return (
@@ -7,7 +10,7 @@ const About = () => {
       <Row className="justify-content-center">
         <Col lg={6} className="text-center">
           <Image
-            src="https://source.unsplash.com/random/200x200/?logo"
+            src={aboutUs}
             className="mb-4"
             roundedCircle
           />
@@ -26,7 +29,7 @@ const About = () => {
           <Card>
             <Card.Img
               variant="top"
-              src="https://source.unsplash.com/random/300x300/?person"
+              src={person1}
             />
             <Card.Body>
               <Card.Title style={{ color: 'black' }}>John Doe</Card.Title>
@@ -41,7 +44,7 @@ const About = () => {
           <Card>
             <Card.Img
               variant="top"
-              src="https://source.unsplash.com/random/300x300/?people"
+              src={person2}
             />
             <Card.Body>
               <Card.Title style={{ color: 'black' }}>Jane Smith</Card.Title>
